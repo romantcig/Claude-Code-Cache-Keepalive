@@ -61,4 +61,6 @@
 2. 进入 Claude 的安装目录（通常在 `C:\Users\<您的用户名>\.local\bin`）。
 3. 删除已修改的 `claude.exe`。
 4. 将备份文件 `claude.exe.x5patch-bak` 重命名还原为 `claude.exe`。
-```
+
+## 致谢
+本项目感谢 [LINUX DO 社区](https://linux.do/) 提供的开源推广支持。

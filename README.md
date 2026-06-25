@@ -1,4 +1,4 @@
-[汉语](https://github.com/romantcig/Claude-Code-Cache-Keepalive/blob/main/README_CN.md)
+[中文](https://github.com/romantcig/Claude-Code-Cache-Keepalive/blob/main/README_CN.md)
 
 # Claude-Code-Cache-Keepalive
 Provide a 5m cache keep-alive for Claude Code. This significantly improves the cache hit rate for long conversations and reduces the costs associated with them. The advantage is that it directly reuses built-in functionality for silent keep-alive, requires no proxy, and does not interfere with the main conversation.
@@ -62,3 +62,6 @@ If you prefer to restore manually:
 2. Go to the Claude executable directory (typically `C:\Users\<YourUsername>\.local\bin`).
 3. Delete the patched `claude.exe`.
 4. Rename the backup file `claude.exe.x5patch-bak` back to `claude.exe`.
+
+## Acknowledgements
+This project gratefully acknowledges the [LINUX DO Community](https://linux.do/) for their open-source promotion support.
