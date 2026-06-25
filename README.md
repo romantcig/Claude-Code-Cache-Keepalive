@@ -22,25 +22,43 @@ If you choose to do so, you will be solely responsible for all compliance and op
 
 ## Prerequisites
 - **Platform**: Windows (This static patch specifically targets the native Windows executable `claude.exe`).
-- **Claude Code Version**: Exact `v2.1.185` (Verification via SHA-256 hash).
-- **Environment**: Python 3.x installed.
+- **Claude Code Version**: Exact `v2.1.185` (You can check your version by running `claude --version` in your terminal).
 
 ## Usage / Installation
+You can patch your Claude Code using either the compiled executable or the Python script directly.
+
+### Method 1: Via Compiled Executable (Recommended)
 1. Close any running instances of **Claude Code**.
-2. Run the patch script in your terminal:
+2. Go to the [Releases](https://github.com/romantcig/Claude-Code-Cache-Keepalive/releases) page and download the compiled `Patch-X5-v2.9-v2.1.185-Static.exe` binary.
+3. Run the downloaded `.exe` file. It will automatically verify the target file, back it up, and apply the patch.
+*(No Python installation required).*
+
+### Method 2: Via Python Script (Requires Python 3.x)
+1. Close any running instances of **Claude Code**.
+2. Download `Patch-X5-v2.9-v2.1.185-Static.py`.
+3. Run the script in your terminal:
    ```bash
    python Patch-X5-v2.9-v2.1.185-Static.py
    ```
-3. The script will automatically verify the executable hash, create a backup file `claude.exe.x5patch-bak` in the same directory, and apply the patch.
 
 ## How to Rollback / Restore
-If you want to revert the patch or run into any issues, you can easily restore the original executable:
+Our script and executable have a built-in one-click restore feature. You can easily revert the patch:
+
+### Method A: Via Command Line (Recommended)
+1. Close **Claude Code**.
+2. Run the restore command depending on how you applied the patch:
+   * **If you used the script**:
+     ```bash
+     python Patch-X5-v2.9-v2.1.185-Static.py --restore
+     ```
+   * **If you used the executable**:
+     ```cmd
+     Patch-X5-v2.9-v2.1.185-Static.exe --restore
+     ```
+
+### Method B: Manual Restore
+If you prefer to restore manually:
 1. Close **Claude Code**.
 2. Go to the Claude executable directory (typically `C:\Users\<YourUsername>\.local\bin`).
 3. Delete the patched `claude.exe`.
 4. Rename the backup file `claude.exe.x5patch-bak` back to `claude.exe`.
-   *(Or you can run the following PowerShell command to restore)*:
-   ```powershell
-   Remove-Item "$env:USERPROFILE\.local\bin\claude.exe" -Force
-   Rename-Item "$env:USERPROFILE\.local\bin\claude.exe.x5patch-bak" "claude.exe"
-   ```

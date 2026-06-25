@@ -21,25 +21,44 @@
 
 ## 前提条件
 - **平台**：Windows （此静态补丁专门针对 Windows 本地原生可执行程序 `claude.exe`）。
-- **Claude Code 版本**：必须为官方的 `v2.1.185`（通过 SHA-256 哈希值进行精确匹配校验）。
-- **运行环境**：已安装 Python 3.x。
+- **Claude Code 版本**：必须为官方的 `v2.1.185`（您可以在终端运行 `claude --version` 来确认当前版本）。
 
 ## 使用方法
+您可以使用编译好的可执行文件（推荐）或直接运行 Python 脚本来应用补丁。
+
+### 方法一：使用编译好的可执行文件（推荐）
 1. 关闭所有正在运行的 **Claude Code** 终端。
-2. 运行补丁脚本：
+2. 前往 [Releases](https://github.com/romantcig/Claude-Code-Cache-Keepalive/releases) 页面下载打包好的 `Patch-X5-v2.9-v2.1.185-Static.exe` 文件。
+3. 双击或在终端运行该 `.exe` 文件。它会自动校验 `claude.exe` 并完成备份与修补。
+*(此方法无需安装 Python)。*
+
+### 方法二：使用 Python 脚本（需要安装 Python 3.x）
+1. 关闭所有正在运行的 **Claude Code** 终端。
+2. 下载 `Patch-X5-v2.9-v2.1.185-Static.py`。
+3. 在终端中运行脚本：
    ```bash
    python Patch-X5-v2.9-v2.1.185-Static.py
    ```
-3. 脚本会自动校验 `claude.exe` 的哈希值，并在同目录下自动创建名为 `claude.exe.x5patch-bak` 的备份文件，然后应用修改。
 
 ## 如何回滚/恢复原版
-如果您需要卸载补丁或在使用中遇到问题，可以随时恢复原始文件：
+补丁脚本和可执行文件均内置了一键还原功能，您可以非常方便地撤销补丁：
+
+### 方法 A：通过命令行还原（推荐）
+1. 关闭 **Claude Code**。
+2. 根据您的使用方式运行还原命令：
+   * **若您使用的是脚本**：
+     ```bash
+     python Patch-X5-v2.9-v2.1.185-Static.py --restore
+     ```
+   * **若您使用的是可执行文件**：
+     ```cmd
+     Patch-X5-v2.9-v2.1.185-Static.exe --restore
+     ```
+
+### 方法 B：手动还原
+如果您希望手动操作：
 1. 关闭 **Claude Code**。
 2. 进入 Claude 的安装目录（通常在 `C:\Users\<您的用户名>\.local\bin`）。
 3. 删除已修改的 `claude.exe`。
 4. 将备份文件 `claude.exe.x5patch-bak` 重命名还原为 `claude.exe`。
-   *(或者，您可以在 PowerShell 终端中直接运行以下命令完成一键恢复)*：
-   ```powershell
-   Remove-Item "$env:USERPROFILE\.local\bin\claude.exe" -Force
-   Rename-Item "$env:USERPROFILE\.local\bin\claude.exe.x5patch-bak" "claude.exe"
-   ```
+```
